@@ -6,6 +6,7 @@ body {
 body .sm-header {
   position: relative;
   display: none;
+  z-index: 1;
 }
 
 body .sm-header h1 {
@@ -90,11 +91,16 @@ body header nav a:hover {
 }
 
 body header .icons {
-  position: absolute;
-  bottom: 10px;
   width: 100%;
   margin: auto;
   font-size: 24px;
+}
+
+@media screen and (min-height: 490px) {
+  body header .icons {
+    position: absolute;
+    bottom: 10px;
+  }
 }
 
 body header .icons i {
@@ -114,6 +120,7 @@ body .main {
   background-color: #292929;
   color: white;
   text-align: center;
+  overflow: hidden;
 }
 
 body .main .carousel .carousel-inner .carousel-item img {
@@ -530,6 +537,17 @@ body .main footer p {
   body .main .contact .contact-block {
     -ms-grid-columns: auto;
         grid-template-columns: auto;
+  }
+  body .main .contact .contact-block .contact-block__elem img {
+    -webkit-filter: opacity(100%) brightness(50%);
+            filter: opacity(100%) brightness(50%);
+  }
+  body .main .contact .contact-block .contact-block__elem .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   }
   body .main .contact .contact-form form .rw-2 {
     -ms-grid-columns: auto;

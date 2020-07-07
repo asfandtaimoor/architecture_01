@@ -1,3 +1,5 @@
+// Import funcitons from custom library file
+@import '../../Custom_Library/Scss_Functions/functions';
 // Colors 
 $primaryColor:rgb(41, 41, 41);
 $secondaryColor:rgb(197, 164, 126);
@@ -6,28 +8,6 @@ $headerLinkColor: rgba(255, 255, 255, 0.5);
 $navWidth: 20%;
 $mainWidth:100% - $navWidth;
 // Nav bar and main size for small screen
-// center
-@mixin center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-// Horizental center
-@mixin hCenter {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-// Vertical Align center
-@mixin vCenter {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 body {
     margin: 0;
     background-color: $primaryColor;
@@ -35,6 +15,7 @@ body {
     .sm-header {
         position: relative;
         display: none;
+        z-index: 1;
         h1 {
             width: 100%;
             height: auto;
@@ -104,8 +85,10 @@ body {
             }
         }
         .icons {
-            position: absolute;
-            bottom: 10px;
+            @media screen and (min-height: 490px) {
+                position: absolute;
+                bottom: 10px;
+            }
             width: 100%;
             margin: auto;
             font-size: 24px;
@@ -127,6 +110,7 @@ body {
         background-color: $primaryColor;
         color: white;
         text-align: center;
+        overflow: hidden;
         // carousel
         .carousel {
             .carousel-inner {
@@ -474,6 +458,14 @@ body {
             .contact {
                 .contact-block {
                     grid-template-columns: auto;
+                    .contact-block__elem {
+                        img {
+                            filter: opacity(100%) brightness(50%);
+                        }
+                        .text {
+                            @include center();
+                        }
+                    }
                 }
                 .contact-form {
                     form {
@@ -486,5 +478,3 @@ body {
         }
     }
 }
-
-@media screen and(max-width:425px) {}
